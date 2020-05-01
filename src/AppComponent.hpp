@@ -2,7 +2,9 @@
 #ifndef AppComponent_hpp
 #define AppComponent_hpp
 
+#include "hls/Playlist.hpp"
 #include "Utils.hpp"
+#include "./auth/AuthDataStorage.hpp"
 
 #include "oatpp/web/server/AsyncHttpConnectionHandler.hpp"
 #include "oatpp/web/server/HttpRouter.hpp"
@@ -69,6 +71,18 @@ public:
         return std::make_shared<StaticFilesManager>(EXAMPLE_MEDIA_FOLDER /* path to '<this-repo>/Media-Stream/video' folder. Put full, absolute path here */) ;
     }());
 
+    OATPP_CREATE_COMPONENT(std::shared_ptr<Playlist>, livePlayList)([] {
+        const std::string playlistFilename = EXAMPLE_MEDIA_FOLDER "/playlist1.m3u8";
+
+        auto playlist = Playlist::parseFromFile(playlistFilename.c_str());
+        playlist.setPlaylistFilename(playlistFilename);
+
+        return std::make_shared<Playlist>(playlist);
+    }());
+
+    OATPP_CREATE_COMPONENT(std::shared_ptr<AuthDataStorage>, authDataStorage)([] {
+        return std::make_shared<AuthDataStorage>();
+    }());
 };
 
 #endif /* AppComponent_hpp */
