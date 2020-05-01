@@ -56,8 +56,8 @@ $ make
 $ ./src/hls_stream_server             # - run application.
 ```
 ## Basic Auth
-Login: hello
-Password: zarzand
+Login: login
+Password: password
 
 ## Interact
 To interact with server, `curl` can be used.
