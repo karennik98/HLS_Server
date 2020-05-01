@@ -55,7 +55,6 @@ $ cmake ..
 $ make 
 $ ./src/hls_stream_server             # - run application.
 ```
-```
 ## Basic Auth
 Login: hello
 Password: zarzand
