@@ -55,6 +55,12 @@ $ cmake ..
 $ make 
 $ ./src/hls_stream_server             # - run application.
 ```
+#### Docker
+```
+$ docker build -t hls_stream_server .
+$ docker run --rm --name hls -p 8000:8000 hls_stream_server
+```
+
 ## Basic Auth
 Login: login
 Password: password
